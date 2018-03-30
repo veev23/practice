@@ -2,13 +2,13 @@
 using namespace std;
 //단일 링크드 리스트
 template <class T>
-class linkedList;
+class LinkedList;
 template <class T>
 class node {
 	T data;
 	node<T>* pNext;
 public:
-	template <class U> friend class linkedList;
+	template <class U> friend class LinkedList;
 	node(T _data) :data(_data){
 		pNext = NULL;
 	}
@@ -20,14 +20,14 @@ public:
 	}
 };
 template <class T>
-class linkedList {
+class LinkedList {
 public:
-	linkedList()
+	LinkedList()
 		:count(0){
 	head = NULL;
 	tail = NULL;
 	}
-	~linkedList() {
+	~LinkedList() {
 		node<T>* temp;
 		for (int i = 0; i < count; i++) {
 			temp = head;
@@ -112,7 +112,7 @@ private:
 };
 int main()
 {
-	linkedList<int> link;
+	LinkedList<int> link;
 	link.push_back(1);
 	link.push_back(2);
 	link.push_back(3);

@@ -3,7 +3,7 @@ using namespace std;
 //더블 링크드 리스트
 class node {
 public:
-	friend class linkedList;
+	friend class LinkedList;
 	node() {
 		preNode = NULL;
 		nextNode = NULL;
@@ -16,13 +16,13 @@ private:
 	node* preNode; //이전 노드를 가리키는 포인터
 	node* nextNode; //다음 노드를 가리키는 포인터
 };
-class linkedList {
+class LinkedList {
 public:
-	linkedList() {
+	LinkedList() {
 		head = NULL;
 		tail = NULL;
 	}
-	~linkedList() {}
+	~LinkedList() {}
 	void push_back(int _data) {
 		node* newNode = new node;
 		newNode->data = _data;
@@ -83,7 +83,7 @@ private:
 };
 int main()
 {
-	linkedList d;
+	LinkedList d;
 	d.insert(10,3);
 	d.push_back(20);
 	d.insert(30,3);
