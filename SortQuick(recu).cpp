@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <ctime>
-#define number 10 //worst caseÀÇ °æ¿ì 16000°³Á¤µµ¸¸ ³Ñ¾î°¡µµ stack overflow
+#define number 10 //worst caseì˜ ê²½ìš° 16000ê°œì •ë„ë§Œ ë„˜ì–´ê°€ë„ stack overflow
 using namespace std;
 void swap(int *a, int *b) {
 	int tmp = *a;
