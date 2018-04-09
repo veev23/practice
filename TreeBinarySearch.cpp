@@ -16,10 +16,10 @@ public:
 		cout << "BST destructor" << endl;
 	}
 	void insert(T _data) {
-		Node<T>*tmp= root;
-		if (root) {
-			root = new Node<T>(_data);
-			m_numNode++;
+		Node<T>*tmp= this->root;
+		if (this->root) {	//부모클래스의 변수 사용할 때에는 this포인터를 사용 
+			this->root = new Node<T>(_data);	//https://stackoverflow.com/questions/194492/accessing-protected-members-from-subclasses-gcc-vs-msvc
+			this->m_numNode++;
 			return;
 		}
 		while (true) {
@@ -27,7 +27,7 @@ public:
 				if (tmp->right) tmp = tmp->right;
 				else {
 					tmp->right->data = _data;		
-					m_numNode++;
+					this->m_numNode++;
 					return;
 				}
 			}
@@ -35,7 +35,7 @@ public:
 				if (tmp->left) tmp = tmp->left;
 				else { 
 					tmp->left->data = _data;
-					m_numNode++;
+					this->m_numNode++;
 					return;
 				}
 			}
@@ -45,6 +45,6 @@ public:
 int main() {
 	TreeBinarySearch<int> B(1);
 	B.PreorderPrint();
-//	B.insert(2);
+	B.insert(2);
 	return 0;
 }
