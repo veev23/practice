@@ -7,7 +7,11 @@ public:
 		left = 0;
 		right = 0;
 	}
-	Node(T _data) :data(_data) {};
+	Node(T _data) :data(_data) {
+		cout << "create : " << data << endl;
+		left = 0;
+		right = 0;
+	};
 	template <typename T> friend class TreeBinary;
 	T data;
 	Node* left;
