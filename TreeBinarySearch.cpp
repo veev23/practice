@@ -86,7 +86,7 @@ public:
 				replaceP = replace;
 				replace = replace->left;
 			}
-			if(replaceP!=NULL)	replaceP->left = replace->right;
+			replaceP->left = replace->right;
 			replace->left = delNode->left;
 			replace->right = delNode->right;
 		}
@@ -94,6 +94,7 @@ public:
 			if (delP->data < key) delP->right = replace;
 			else delP->left = replace;
 		}
+		else this->root = replace;
 		cout << "del:" << delNode->data << "\n";
 		delete delNode;
 		return true;
@@ -108,7 +109,7 @@ int main() {
 	B.insert(5);
 	B.insert(7);
 	B.PreorderPrint();
-	B.Remove(5);
+	B.Remove(4);
 	B.PreorderPrint();
 	return 0;
 }
