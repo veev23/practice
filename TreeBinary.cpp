@@ -42,7 +42,6 @@ public:
 		if (delNode) {
 			RemoveAll(delNode->left);
 			RemoveAll(delNode->right);
-			cout << delNode->data << " delete\n";
 			delete delNode;
 		}
 	}
