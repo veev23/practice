@@ -1,30 +1,40 @@
 #include <iostream>
 #include <ctime>
+#include <vector>
 using namespace std;
-#define number 10
+#define number 20
 #define maximum 20000
+template <typename T>
+void swapT(T& a, T& b) {
+	T tmp = a;
+	a = b;
+	b = tmp;
+}
 template <typename T>
 class Heap {
 public:
-	Heap():count(0)
-	{};
+	Heap() :count(0)
+	{
+		tree.push_back(0);
+	};
 	void insert(T data) {
-		tree[++count] = data;
+		count++;
+		tree.push_back(data);
 		UpHeap();
 	};
 	T extract() {
 		T tmp = tree[1];
-		tree[1] = tree[count--];
+		count--;
+		tree[1] = tree.back();
 		DownHeap();
+		tree.pop_back();
 		return tmp;
 	};
 	void UpHeap() {
 		int i = count;
 		while (i > 1) {
 			if (tree[i / 2] < tree[i]) {
-				T tmp = tree[i / 2];
-				tree[i / 2] = tree[i];
-				tree[i] = tmp;
+				swapT(tree[i / 2], tree[i]);
 				i /= 2;
 			}
 			else break;
@@ -35,9 +45,7 @@ public:
 		while (i <= count) {
 			if (tree[i] < tree[i + 1]) i++;
 			if (tree[i / 2] < tree[i]) {
-				T tmp = tree[i / 2];
-				tree[i / 2] = tree[i];
-				tree[i] = tmp;
+				swapT(tree[i / 2], tree[i]);
 				i *= 2;
 			}
 			else break;
@@ -53,7 +61,7 @@ public:
 		cout << "\nHEAP SORT";
 	};
 private:
-	T tree[maximum];
+	vector<T> tree;
 	int count;
 };
 int main() {
@@ -61,7 +69,7 @@ int main() {
 	srand(time(0));
 	int arr[number];
 	for (int i = 0; i < number; i++) {
-		arr[i] = rand() % 50;
+		arr[i] = rand() % 50+1;
 		cout << arr[i] << " ";
 	}
 	clock_t a = clock();
